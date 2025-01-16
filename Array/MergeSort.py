@@ -1,13 +1,6 @@
-import random
+from ArrayCommon import *
 
-def createRandomArray(length, lowerbound, upperbound):
-    array = []
-    for i in range(length):
-        currentNum = random.randint(lowerbound, upperbound)
-        array.append(currentNum)
-    return array
-
-def mergeSort(l):
+def mergeSort(l:list[int]) -> list[int]:
     if (len(l) == 1):
         return l
     
