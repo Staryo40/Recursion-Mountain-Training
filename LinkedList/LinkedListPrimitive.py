@@ -1,41 +1,35 @@
-class ListNode:
+class LinkedList:
     def __init__(self, info=None, next=None):
         self.info = info
         self.next = next
-
-class LinkedList:
-    def __init__(self, head=None):
-        self.head = ListNode(head)
     
     def appendList(self, value):
-        if (self.head == None):
-            self.head = ListNode(value)
+        if (self.info == None):
+            self.info = value
         else:
-            currentNode = self.head
-            if (currentNode.next == None):
-                n = ListNode(value)
-                currentNode.next = n
+            if (self.next == None):
+                l = LinkedList(value)
+                self.next = l
             else:
-                currentNode.next.appendList(value)
+                self.next.appendList(value)
     
     def prependList(self, value):
-        if (self.head == None):
-            self.head = ListNode(value)
+        if (self.info == None):
+            self.info = value
         else:
-            l = ListNode(value)
-            l.next = self.head
-            self.head = l
+            l = LinkedList(self.info)
+            l.next = self.next
+            self.info = value
+            self.next = l
 
     def printList(self):
-        if (self.head != None):
-            currentNode = self.head
-            if (currentNode.next != None):
-                print(currentNode.info, end=" ")
+        if (self.info != None):
+            if (self.next != None):
+                print(self.info, end=" ")
                 print("->", end=" ")
-                nextNode = currentNode.next
-                nextNode.printList()
+                self.next.printList()
             else:
-                print(currentNode.info)
+                print(self.info)
                 
 
 l = LinkedList(1)
