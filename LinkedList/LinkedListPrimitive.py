@@ -22,6 +22,29 @@ class LinkedList:
             self.info = value
             self.next = l
 
+    def insertAt(self, value, index):
+        if (self.length() < index):
+            print("Invalid index: index larger than list length")
+        elif (index < 0):
+            print("Invalid index: negative index")
+        else:
+            if (index == 0):
+                self.prependList(value)
+            else:
+                if (index == 1):
+                    l = LinkedList(value)
+                    l.next = self.next
+                    self.next = l
+                else:
+                    self.next.insertAt(value, index-1)
+
+    def length(self):
+        if (self.info == None):
+            return 0
+        if (self.next == None):
+            return 1
+        return 1 + self.next.length()
+
     def printList(self):
         if (self.info != None):
             if (self.next != None):
@@ -37,4 +60,6 @@ l.printList()
 l.appendList(2)
 l.printList()
 l.prependList(0)
+l.printList()
+l.insertAt(7, 0)
 l.printList()
