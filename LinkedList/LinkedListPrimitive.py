@@ -90,10 +90,12 @@ class LinkedList:
         elif (index < 0):
             print("Invalid index: negative index")
         else:
-            if (index == 0):
+            if (index == self.length()-1):
+                return self.deleteLast()
+            elif (index == 0):
                 return self.deleteFirst()
             else:
-                return self.deleteAt(index-1)
+                return self.next.deleteAt(index-1)
     
     def reverseList(self):
         last = self
@@ -114,11 +116,11 @@ l = LinkedList(1)
 l.printList()
 l.appendList(2)
 l.printList()
-lr = l.reverseList()
-lr.printList()
 l.prependList(0)
 l.printList()
 l.insertAt(7, 2)
 l.printList()
-lr = l.reverseList()
-lr.printList()
+l.deleteAt(0)
+l.printList()
+# lr = l.reverseList()
+# lr.printList()
