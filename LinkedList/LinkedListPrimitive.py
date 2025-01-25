@@ -83,24 +83,42 @@ class LinkedList:
                 return value
             else:
                 return self.next.deleteLast()
-                
+    
+    def deleteAt(self, index):
+        if (self.length() < index):
+            print("Invalid index: index larger than list length")
+        elif (index < 0):
+            print("Invalid index: negative index")
+        else:
+            if (index == 0):
+                return self.deleteFirst()
+            else:
+                return self.deleteAt(index-1)
+    
+    def reverseList(self):
+        last = self
+        while (last.next != None):
+            last = last.next
+        l = LinkedList(last.info)
+        for i in range(self.length()-1):
+            before = last
+            last = self
+            while (last.next != before):
+                last = last.next
+            l.appendList(last.info)
+        return l
+
+
 
 l = LinkedList(1)
 l.printList()
 l.appendList(2)
 l.printList()
+lr = l.reverseList()
+lr.printList()
 l.prependList(0)
 l.printList()
 l.insertAt(7, 2)
 l.printList()
-l.deleteFirst()
-l.printList()
-x = l.deleteLast()
-l.printList()
-print(f"x value = {x}")
-x = l.deleteLast()
-l.printList()
-print(f"x value = {x}")
-x = l.deleteLast()
-l.printList()
-print(f"x value = {x}")
+lr = l.reverseList()
+lr.printList()
