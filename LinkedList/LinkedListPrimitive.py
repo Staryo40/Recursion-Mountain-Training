@@ -9,6 +9,15 @@ class LinkedList:
         if (self.next == None):
             return 1
         return 1 + self.next.length()
+    
+    def element(self, index):
+        if (index == 0):
+            return self.info
+        else:
+            return self.next.element(index-1)
+    
+    def isEmpty(self):
+        return (self.info == None)
 
     def printList(self):
         if (self.info != None):
@@ -120,7 +129,7 @@ l.prependList(0)
 l.printList()
 l.insertAt(7, 2)
 l.printList()
-l.deleteAt(0)
-l.printList()
+print(l.element(3))
+print(l.isEmpty())
 # lr = l.reverseList()
 # lr.printList()
