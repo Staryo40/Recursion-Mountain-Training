@@ -19,35 +19,38 @@ class BinaryTree:
     def isBinary(self):
         return (self.info != None and self.right != None and self.left != None)
     
-    def deleteTree(self):
-        self.info = None
-        self.right = None
-        self.left = None
-    
-    def deleteLeft(self):
-        self.left = None
-
-    def deleteRight(self):
-        self.right = None
-
-    def deleteBranches(self):
-        self.deleteLeft()
-        self.deleteRight()
-
-    def printPreOrder(self):
-        if (not self.isEmpty()):
-            print(self.info)
-        
-        print("L: ", end="")
+    def depth(self):
+        if (self.isEmpty()):
+            return -1
+        if (self.isLeaf()):
+            return 0
+        left = 0
+        right = 0
         if (self.isUnerLeft()):
-            self.printPreOrder(self.left)
-        
-        print("R: ", end="")
+            left = 1 + self.left.depth()
         if (self.isUnerRight()):
-            self.printPreOrder(self.right)
-        
-    def printInOrder(self):
-        pass
+            right = 1 + self.right.depth()
+        return max(left, right)
 
-    def printPostOrder(self):
-        pass
+    def level(self, value):
+        # value is guaranteed to be on the tree
+        if (self.info == value):
+            return 0
+        left = 0
+        right = 0
+        if (self.isUnerLeft()):
+            left = 1 + self.left.level()
+        if (self.isUnerRight()):
+            right = 1 + self.right.level()
+        return max(left, right)
+    
+    # def printPreOrder(self):
+        # get depth
+        # make matrix dimension = height x 2^(height-1)
+        # 
+        
+    # def printInOrder(self):
+    #     pass
+
+    # def printPostOrder(self):
+    #     pass

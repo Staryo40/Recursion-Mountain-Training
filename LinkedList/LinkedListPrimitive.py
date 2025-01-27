@@ -11,7 +11,11 @@ class LinkedList:
         return 1 + self.next.length()
     
     def element(self, index):
-        if (index == 0):
+        if (self.length() < index):
+            print("Invalid index: index larger than list length")
+        elif (index < 0):
+            print("Invalid index: negative index")
+        elif (index == 0):
             return self.info
         else:
             return self.next.element(index-1)
