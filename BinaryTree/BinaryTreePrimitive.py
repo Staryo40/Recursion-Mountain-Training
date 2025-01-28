@@ -44,13 +44,48 @@ class BinaryTree:
             right = 1 + self.right.level()
         return max(left, right)
     
-    # def printPreOrder(self):
-        # get depth
-        # make matrix dimension = height x 2^(height-1)
-        # 
+    def printPreOrderList(self):
+        if (not self.isEmpty()):
+            if (self.isLeaf()):
+                print(self.info)
+            else:
+                print(self.info, end="")
+                if (self.isUnerLeft()):
+                    self.left.printPreOrderList()
+                elif (self.isUnerRight()):
+                    self.right.printPreOrderList()
+                else:
+                    self.left.printPreOrderList()
+                    self.right.printPreOrderList()
         
-    # def printInOrder(self):
-    #     pass
-
-    # def printPostOrder(self):
-    #     pass
+    def printInOrderList(self):
+        if (not self.isEmpty()):
+            if (self.isLeaf()):
+                print(self.info)
+            else:
+                if (self.isUnerLeft()):
+                    self.left.printPreOrderList()
+                    print(self.info, end="")
+                elif (self.isUnerRight()):
+                    print(self.info, end="")
+                    self.right.printPreOrderList()
+                else:
+                    self.left.printPreOrderList()
+                    print(self.info, end="")
+                    self.right.printPreOrderList()
+    
+    def printPostOrderList(self):
+        if (not self.isEmpty()):
+            if (self.isLeaf()):
+                print(self.info)
+            else:
+                if (self.isUnerLeft()):
+                    self.left.printPreOrderList()
+                    print(self.info, end="")
+                elif (self.isUnerRight()):
+                    self.right.printPreOrderList()
+                    print(self.info, end="")
+                else:
+                    self.left.printPreOrderList()
+                    self.right.printPreOrderList()
+                    print(self.info, end="")
