@@ -11,7 +11,24 @@ def insertToBST(t:BinaryTree, x:int):
         t.info = x
         return
     if (t.info > x):
-        insertToBST(t.left, x)
+        if (t.left == None):
+            new = BinaryTree(x)
+            t.left = new
+        else:
+            insertToBST(t.left, x)
     else:
-        insertToBST(t.right, x)
+        if (t.right == None):
+            new = BinaryTree(x)
+            t.right = new
+        else:
+            insertToBST(t.right, x)
 
+x = [3,1,6,9,5,7]
+tree = listToBST(x)
+# tree.printLeavesLR()
+tree.printPreOrderList()
+print("")
+tree.printInOrderList()
+print("")
+tree.printPostOrderList()
+print("")

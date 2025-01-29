@@ -47,7 +47,7 @@ class BinaryTree:
     def printPreOrderList(self):
         if (not self.isEmpty()):
             if (self.isLeaf()):
-                print(self.info)
+                print(self.info, end="")
             else:
                 print(self.info, end="")
                 if (self.isUnerLeft()):
@@ -61,31 +61,43 @@ class BinaryTree:
     def printInOrderList(self):
         if (not self.isEmpty()):
             if (self.isLeaf()):
-                print(self.info)
+                print(self.info, end="")
             else:
                 if (self.isUnerLeft()):
-                    self.left.printPreOrderList()
+                    self.left.printInOrderList()
                     print(self.info, end="")
                 elif (self.isUnerRight()):
                     print(self.info, end="")
-                    self.right.printPreOrderList()
+                    self.right.printInOrderList()
                 else:
-                    self.left.printPreOrderList()
+                    self.left.printInOrderList()
                     print(self.info, end="")
-                    self.right.printPreOrderList()
+                    self.right.printInOrderList()
     
     def printPostOrderList(self):
         if (not self.isEmpty()):
             if (self.isLeaf()):
-                print(self.info)
+                print(self.info, end="")
             else:
                 if (self.isUnerLeft()):
-                    self.left.printPreOrderList()
+                    self.left.printPostOrderList()
                     print(self.info, end="")
                 elif (self.isUnerRight()):
-                    self.right.printPreOrderList()
+                    self.right.printPostOrderList()
                     print(self.info, end="")
                 else:
-                    self.left.printPreOrderList()
-                    self.right.printPreOrderList()
+                    self.left.printPostOrderList()
+                    self.right.printPostOrderList()
                     print(self.info, end="")
+
+    def printLeavesLR(self):
+        if (self.isLeaf()):
+            print(self.info)
+        else:
+            if (self.isUnerLeft()):
+                self.left.printLeavesLR()
+            if (self.isUnerRight()):
+                self.right.printLeavesLR()
+            if (self.isBinary()):
+                self.left.printLeavesLR()
+                self.right.printLeavesLR()
