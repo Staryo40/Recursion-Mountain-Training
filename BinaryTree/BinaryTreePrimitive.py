@@ -101,3 +101,8 @@ class BinaryTree:
             if (self.isBinary()):
                 self.left.printLeavesLR()
                 self.right.printLeavesLR()
+
+    # print plan
+    # 1. make a matrix dimension = depth*(2^(depth)-1)
+    # 2. basis is the lowest level (leaf), has space between each leaf of 2^1 - 1 or 1
+    # 3. the next level follows the rule of space between nodes are 2^(depth-level+1) - 1 and the space at the outer nodes are from the space between nodes of the lower level
