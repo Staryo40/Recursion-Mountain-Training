@@ -1,4 +1,4 @@
-def LCS(s1:str, s2: str) -> int:
+def LCSLen(s1:str, s2: str) -> int:
     subsequence1 = subsequence(s1)
     subsequence2 = subsequence(s2)
 
@@ -10,6 +10,19 @@ def LCS(s1:str, s2: str) -> int:
                     res = len(sub1)
                 break
     return res
+
+def LCS(s1:str, s2: str) -> list[str]:
+    n = LCSLen(s1, s2)
+
+    subsequence1 = subsequence(s1)
+    subsequence2 = subsequence(s2)
+
+    res = []
+    for sub1 in subsequence1:
+        if (len(sub1) == n and sub1 not in res):
+            if sub1 in subsequence2:
+                res.append(sub1)
+    return res 
 
 def subsequence(s:str) -> list[str]:
     if (len(s) == 0):
@@ -29,6 +42,6 @@ def subsequence(s:str) -> list[str]:
 
     return before + new
 
-print(f"LCS of 'ABC' and 'ACD' = {LCS("ABC", 'ACD')}")
-print(f"LCS of 'AGGTAB' and 'GXTXAYB' = {LCS("AGGTAB", 'GXTXAYB')}")
-print(f"LCS of 'ABC' and 'CBA' = {LCS("ABC", 'CBA')}")
+print(f"LCS of 'ABC' and 'ACD' has the length {LCSLen("ABC", 'ACD')} which are {LCS("ABC", 'ACD')}")
+print(f"LCS of 'AGGTAB' and 'GXTXAYB' has the length {LCSLen("AGGTAB", 'GXTXAYB')} which are {LCS("AGGTAB", 'GXTXAYB')}")
+print(f"LCS of 'ABC' and 'CBA' has the length {LCSLen("ABC", 'CBA')} which are {LCS("ABC", 'CBA')}")
