@@ -6,3 +6,5 @@ def isPalindrome(x:str) -> bool:
     
     compare = x[0] == x[len(x)-1]
     return compare and isPalindrome(x[1:(len(x)-1)])
+
+# add comment
