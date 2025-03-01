@@ -8,3 +8,4 @@ def isPalindrome(x:str) -> bool:
     return compare and isPalindrome(x[1:(len(x)-1)])
 
 # add comment
+# more comments
